@@ -1,0 +1,61 @@
+package se.ucsc.hsptl.assignment.data;
+
+/**
+ * Created by Indika on 4/29/2017.
+ */
+public class PatientData implements Data
+{
+  PersonData personData;
+  Name name;
+  ContactData contactData;
+  private String patientId;
+
+  public PatientData()
+  {
+  }
+
+  public PatientData(PersonData personData, Name name, ContactData contactData)
+  {
+    this.personData = personData;
+    this.name = name;
+    this.contactData = contactData;
+  }
+
+  public PersonData getPersonData()
+  {
+    return personData;
+  }
+
+  public PatientData setPersonData(PersonData personData)
+  {
+    this.personData = personData;
+    return this;
+  }
+
+  public Name getName()
+  {
+    return name;
+  }
+
+  public PatientData setName(Name name)
+  {
+    this.name = name;
+    return this;
+  }
+
+  public ContactData getContactData()
+  {
+    return contactData;
+  }
+
+  public PatientData setContactData(ContactData contactData)
+  {
+    this.contactData = contactData;
+    return this;
+  }
+
+  public String getPatientId()
+  {
+    return patientId;
+  }
+}
