@@ -67,7 +67,7 @@ public class Name
   private void setPresentationName()
   {
     StringBuffer stringBuffer = new StringBuffer();
-    stringBuffer.append(title).append(SPACE).append(lastName).append(SPACE).append(firstName.toUpperCase().charAt(0))
+    stringBuffer.append(title).append(SPACE).append(lastName.toUpperCase()).append(SPACE).append(firstName.toUpperCase().charAt(0))
       .append(DOT_SPACE).append(middleName.toUpperCase().charAt(0)).append(DOT);
 
     this.presentationName = stringBuffer.toString();

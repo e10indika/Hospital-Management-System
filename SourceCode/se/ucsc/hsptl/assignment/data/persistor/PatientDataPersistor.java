@@ -71,11 +71,12 @@ public class PatientDataPersistor implements DataPersistor<PatientData>
   private String getPatientValues(PatientData patientData)
   {
     StringBuffer stringBuffer = new StringBuffer();
-    stringBuffer.append(getFormattedValue(patientData.getPatientId())).append(COMMA_SPACE).append(patientData.getName().getFirstName()).append(COMMA_SPACE)
+    stringBuffer.append(getFormattedValue(patientData.getPatientId())).append(COMMA_SPACE).append(patientData.getName().getFirstName()).append(COMMA_SPACE);
+    return stringBuffer.toString();
   }
 
   private String getFormattedValue(String value)
   {
-    
+    return null;
   }
 }
