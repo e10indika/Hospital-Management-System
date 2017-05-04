@@ -21,4 +21,9 @@ public class AttendanceDTO
   public AttendanceDTO()
   {
   }
+
+  public static String[] getAttendanceTableFields()
+  {
+    return new String[0];
+  }
 }

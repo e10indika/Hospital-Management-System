@@ -5,4 +5,10 @@ package se.ucsc.hsptl.assignment.data;
  */
 public class AttendanceData implements Data
 {
+  private String attendanceId;
+
+  public String getAttendanceId()
+  {
+    return attendanceId;
+  }
 }
