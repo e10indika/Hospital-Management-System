@@ -11,4 +11,5 @@ public class SQLConstants
 
   /** DataBase table name as Constants */
   public static final String PATIENT_TABLE = "ASC_Customer";
+  public static final String ATTENDANT_TABLE = "ASC_Attendant";
 }
