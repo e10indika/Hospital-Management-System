@@ -15,9 +15,9 @@ public class DrugDataPersistor implements DataPersistor<DrugData>
   }
 
   @Override
-  public String saveAndGet(DrugData drugData) throws DataPersistorException
+  public int saveAndGet(DrugData drugData) throws DataPersistorException
   {
-    return null;
+    return 0;
   }
 
   @Override

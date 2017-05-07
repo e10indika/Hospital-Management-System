@@ -15,9 +15,9 @@ public class SalaryDataPersistor implements DataPersistor<SalaryData>
   }
 
   @Override
-  public String saveAndGet(SalaryData salaryData) throws DataPersistorException
+  public int saveAndGet(SalaryData salaryData) throws DataPersistorException
   {
-    return null;
+    return 0;
   }
 
   @Override

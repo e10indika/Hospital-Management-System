@@ -15,9 +15,9 @@ public class PaymentDataPersistor implements DataPersistor<PatientData>
   }
 
   @Override
-  public String saveAndGet(PatientData patientData) throws DataPersistorException
+  public int saveAndGet(PatientData patientData) throws DataPersistorException
   {
-    return null;
+    return 0;
   }
 
   @Override

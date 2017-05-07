@@ -42,9 +42,9 @@ public class UserLoginDataPersistor implements DataPersistor<UserLoginData>
   }
 
   @Override
-  public String saveAndGet(UserLoginData userLoginData) throws DataPersistorException
+  public int saveAndGet(UserLoginData userLoginData) throws DataPersistorException
   {
-    return null;
+    return 0;
   }
 
   @Override

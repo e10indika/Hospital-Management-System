@@ -35,7 +35,7 @@ public class AttendentDataPersistor implements DataPersistor<AttendantData>
   }
 
   @Override
-  public String saveAndGet(AttendantData attendantData) throws DataPersistorException
+  public int saveAndGet(AttendantData attendantData) throws DataPersistorException
   {
     try
     {
@@ -44,10 +44,9 @@ public class AttendentDataPersistor implements DataPersistor<AttendantData>
                       AttendantDTO.getAttendantTableFields(),
                       getAttendantValues(attendantData),
                       null,
-                      DataBaseQueryType.INSERT)
-        .getString(0);
+                      DataBaseQueryType.INSERT);
     }
-    catch (DataBaseException | SQLException e)
+    catch (DataBaseException e)
     {
       throw new DataPersistorException("Attendant data saving is failed for patient =", e);
     }

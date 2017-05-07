@@ -12,7 +12,7 @@ public interface DataPersistor<D extends Data>
 
   void save(D d) throws DataPersistorException;
 
-  String saveAndGet(D d) throws DataPersistorException;
+  int saveAndGet(D d) throws DataPersistorException;
 
   String update(D d) throws DataPersistorException;
 
