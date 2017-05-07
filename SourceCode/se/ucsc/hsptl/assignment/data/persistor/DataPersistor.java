@@ -15,4 +15,9 @@ public interface DataPersistor<D extends Data>
   String saveAndGet(D d) throws DataPersistorException;
 
   String update(D d) throws DataPersistorException;
+
+  default String getFormattedValue(String value)
+  {
+    return "'".concat(value).concat("'").concat(COMMA_SPACE);
+  }
 }

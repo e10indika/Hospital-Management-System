@@ -17,7 +17,7 @@ public class DataBaseConnectionService
   {
     try
     {
-      conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "admin", "admin");
+      conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital", "admin", "admin");
     }
     catch (SQLException e)
     {

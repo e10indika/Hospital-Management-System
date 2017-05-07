@@ -1,8 +1,9 @@
 package se.ucsc.hsptl.assignment.db;
 
-import se.ucsc.hsptl.assignment.exception.DataBaseException;
-
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import se.ucsc.hsptl.assignment.exception.DataBaseException;
 
 /**
  * Created by Indika on 4/29/2017.
@@ -13,11 +14,14 @@ public class DeleteQuery extends AbstractQuery
   public ResultSet executeQuery(String area, String[] fields, String sql) throws DataBaseException
   {
     String query = createSqlQuery(area, sql);
+    PreparedStatement statement = createPrepareStatement(query);
+    executeUpdate(statement);
+
     return null;
   }
 
-  @Override public ResultSet executeQuery(String area, String[] fields, String value, String condition)
-    throws DataBaseException
+  @Override
+  public int executeQuery(String area, String[] fields, String value, String condition) throws DataBaseException
   {
     throw new DataBaseException("Method is not implemented");
   }

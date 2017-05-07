@@ -4,6 +4,7 @@ import se.ucsc.hsptl.assignment.exception.DataBaseException;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Created by Indika on 4/29/2017.
@@ -14,18 +15,16 @@ public class InsertQuery extends AbstractQuery
   public ResultSet executeQuery(String area, String[] fields, String condition)
     throws DataBaseException
   {
-    String sqlQuery = createSqlQuery(area, fields, String.valueOf(condition));
-    PreparedStatement statement = createPrepareStatement(sqlQuery);
-    return executePrepareStatement(statement);
+    throw new DataBaseException("Method is not Implemented");
   }
 
   @Override
-  public ResultSet executeQuery(String area, String[] fields, String valueString, String condition)
+  public int executeQuery(String area, String[] fields, String valueString, String condition)
     throws DataBaseException
   {
     String sqlQuery = createSqlQuery(area, fields, valueString);
     PreparedStatement statement = createPrepareStatement(sqlQuery);
-    return executePrepareStatement(statement);
+    return executeUpdate(statement);
   }
 
   private String createSqlQuery(String area, String[] fields, String values)

@@ -8,7 +8,7 @@ public interface Query
 {
   ResultSet executeQuery(String area, String[] fields, String sql) throws DataBaseException;
 
-  ResultSet executeQuery(String area, String[] fields, String value, String condition) throws DataBaseException;
+  int executeQuery(String area, String[] fields, String value, String condition) throws DataBaseException;
 
   //ResultSet executeQuery(String area, String[] fields, Object value) throws DataBaseException;
 }

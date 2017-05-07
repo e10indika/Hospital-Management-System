@@ -42,14 +42,26 @@ public abstract class AbstractQuery implements Query
     {
       stringBuffer.append(field).append(COMMA_SPACE);
     }
-    return stringBuffer.toString().trim().substring(0, stringBuffer.toString().trim().length());
+    return stringBuffer.toString().trim().substring(0, stringBuffer.toString().trim().length() - 1);
   }
 
-  protected ResultSet executePrepareStatement(PreparedStatement statement) throws DataBaseException
+  protected ResultSet executeQuery(PreparedStatement statement) throws DataBaseException
   {
     try
     {
       return statement.executeQuery();
+    }
+    catch (SQLException e)
+    {
+      throw new DataBaseException("Query executing is failed", e);
+    }
+  }
+
+  protected int executeUpdate(PreparedStatement statement) throws DataBaseException
+  {
+    try
+    {
+      return statement.executeUpdate();
     }
     catch (SQLException e)
     {

@@ -1,6 +1,9 @@
 package se.ucsc.hsptl.assignment.db;
 
-import static se.ucsc.hsptl.assignment.db.SQLConstants.*;
+import static se.ucsc.hsptl.assignment.db.SQLConstants.AND;
+import static se.ucsc.hsptl.assignment.db.SQLConstants.COMMA;
+import static se.ucsc.hsptl.assignment.db.SQLConstants.EQUAL;
+import static se.ucsc.hsptl.assignment.db.SQLConstants.IN;
 
 import java.util.List;
 import java.util.Map;
@@ -45,6 +48,10 @@ public class SQLToolKit
       Set<String> fields = mapElements.keySet();
       for (String field : fields)
       {
+        if (stringBuffer.length() > 0)
+        {
+          stringBuffer.append(AND);
+        }
         stringBuffer.append(createWhereClause(field, mapElements.get(field)));
       }
       return stringBuffer.toString();
@@ -66,7 +73,7 @@ public class SQLToolKit
   {
     if (validate(field) && validate(conditionValue))
     {
-      return new StringBuffer(field.trim()).append(EQUAL).append(conditionValue.trim()).toString();
+      return new StringBuffer(field.trim()).append(EQUAL).append("'" + conditionValue.trim() + "'").toString();
     }
     throw new DataBaseException("Where clause creation process failed");
   }
