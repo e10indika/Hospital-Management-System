@@ -8,6 +8,7 @@ import java.sql.Date;
  */
 public class AttendanceDTO
 {
+  private static final String[] FIELDS = new String[] { "attendanceId", "employeeId", "type", "date", "time" };
   private long attendanceId;
 
   private String employeeId;
@@ -25,5 +26,10 @@ public class AttendanceDTO
   public static String[] getAttendanceTableFields()
   {
     return new String[0];
+  }
+
+  public static String[] getTableFields()
+  {
+    return FIELDS;
   }
 }

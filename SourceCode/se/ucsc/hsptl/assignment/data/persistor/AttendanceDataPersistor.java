@@ -1,7 +1,5 @@
 package se.ucsc.hsptl.assignment.data.persistor;
 
-import java.sql.SQLException;
-
 import se.ucsc.hsptl.assignment.data.AttendanceData;
 import se.ucsc.hsptl.assignment.db.DataBaseQueryType;
 import se.ucsc.hsptl.assignment.db.DataBaseService;
@@ -16,6 +14,17 @@ import se.ucsc.hsptl.assignment.exception.DataPersistorException;
  */
 public class AttendanceDataPersistor implements DataPersistor<AttendanceData>
 {
+  private static final AttendanceDataPersistor INSTANCE = new AttendanceDataPersistor();
+
+  private AttendanceDataPersistor()
+  {
+  }
+
+  public static AttendanceDataPersistor getInstance()
+  {
+    return INSTANCE;
+  }
+
   @Override
   public void save(AttendanceData attendanceData) throws DataPersistorException
   {
@@ -39,12 +48,11 @@ public class AttendanceDataPersistor implements DataPersistor<AttendanceData>
   {
     try
     {
-      return DataBaseService
-        .executeQuery(SQLConstants.ATTENDANCE_TABLE,
-                      AttendanceDTO.getAttendanceTableFields(),
-                      getAttendanceValues(attendanceData),
-                      null,
-                      DataBaseQueryType.INSERT);
+      return DataBaseService.executeQuery(SQLConstants.ATTENDANCE_TABLE,
+                                          AttendanceDTO.getAttendanceTableFields(),
+                                          getAttendanceValues(attendanceData),
+                                          null,
+                                          DataBaseQueryType.INSERT);
     }
     catch (DataBaseException e)
     {
