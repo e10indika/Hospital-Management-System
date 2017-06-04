@@ -33,6 +33,10 @@ public class SQLToolKit
       StringBuffer stringBuffer = new StringBuffer();
       for (int i = 0; i < fields.length; i++)
       {
+        if (i != 0)
+        {
+          stringBuffer.append(AND);
+        }
         stringBuffer = stringBuffer.append(getWhereClause(fields[i], conditionValues[i]));
       }
       return stringBuffer.toString();
@@ -89,7 +93,7 @@ public class SQLToolKit
 
   private static String getListAsString(List<String> conditionValues)
   {
-    StringBuffer stringBuffer = new StringBuffer();
+    StringBuffer stringBuffer = new StringBuffer().append(" (");
     for (String value : conditionValues)
     {
       stringBuffer.append(value).append(", ");

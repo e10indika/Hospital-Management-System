@@ -5,6 +5,7 @@ import se.ucsc.hsptl.assignment.data.PatientData;
 import se.ucsc.hsptl.assignment.db.DataBaseQueryType;
 import se.ucsc.hsptl.assignment.db.DataBaseService;
 import se.ucsc.hsptl.assignment.db.SQLConstants;
+import se.ucsc.hsptl.assignment.db.SQLToolKit;
 import se.ucsc.hsptl.assignment.db.dto.PatientDTO;
 import se.ucsc.hsptl.assignment.exception.DataBaseException;
 import se.ucsc.hsptl.assignment.exception.DataPersistorException;
@@ -69,7 +70,9 @@ public class PatientDataPersistor implements DataPersistor<PatientData>
                       new String[] { PatientDTO.getPatientTableFields()[10], PatientDTO.getPatientTableFields()[11] },
                       new String[] { getFormattedValue(CommonToolkit.getCurrentDate()),
                                      getFormattedValue(CommonToolkit.isLatest(false)) },
-                      "patientId = '" + patientData.getPatientId() + "'",
+                      SQLToolKit
+                        .getWhereClause(new String[] { "patientId", "latest" },
+                                        new String[] { patientData.getPatientId(), CommonToolkit.isLatest(true) }),
                       DataBaseQueryType.UPDATE);
       int value = saveAndGet(patientData);
       return String.valueOf(value);

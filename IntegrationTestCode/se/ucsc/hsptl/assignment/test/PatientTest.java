@@ -1,7 +1,10 @@
-package se.ucsc.hsptl.assignment.patient;
+package se.ucsc.hsptl.assignment.test;
 
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertNotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -26,10 +29,14 @@ public class PatientTest
   {
     PatientData patientData = getPatientData();
 
-    /*
-     * try { PatientDataPersistor.getInstance().save(patientData); } catch (DataPersistorException e) {
-     * e.printStackTrace(); }
-     */
+    try
+    {
+      PatientDataPersistor.getInstance().save(patientData);
+    }
+    catch (DataPersistorException e)
+    {
+      e.printStackTrace();
+    }
 
     PatientData getPatientData = null;
     try
@@ -42,7 +49,26 @@ public class PatientTest
     }
     assertNotNull(getPatientData);
     assertEquals("1", getPatientData.getPatientId());
-    assertEquals("Mr. KUMARA I. S.", getPatientData.getName().getPresentationName());
+    assertEquals("Mr. KUMARA P. S.", getPatientData.getName().getPresentationName());
+
+    List<PatientData> getPatientDatas = null;
+    try
+    {
+      List<String> ids = new ArrayList<>();
+      ids.add("1");
+      ids.add("2");
+      getPatientDatas = PatientDataLoader.getInstance().loadByIds(ids);
+    }
+    catch (DataLoaderException e)
+    {
+      e.printStackTrace();
+    }
+    assertNotNull(getPatientDatas);
+    assertEquals(2, getPatientDatas.size());
+    assertEquals("1", getPatientDatas.get(0).getPatientId());
+    assertEquals("Mr. KUMARA P. S.", getPatientDatas.get(0).getName().getPresentationName());
+    assertEquals("2", getPatientDatas.get(1).getPatientId());
+    assertEquals("Mr. KUMARA P. S.", getPatientDatas.get(1).getName().getPresentationName());
 
   }
 
