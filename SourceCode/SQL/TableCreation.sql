@@ -1,5 +1,6 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
+/* Drop table if there are */
 DROP TABLE IF EXISTS `HMS_Patient`;
 DROP TABLE IF EXISTS `HMS_Employee`;
 DROP TABLE IF EXISTS `HMS_Doctor`;
