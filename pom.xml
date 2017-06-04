@@ -62,6 +62,20 @@
                 </excludes>
             </testResource>
         </testResources>
+
+        <!--  Start integration test-->
+        <!--
+                <testSourceDirectory>IntegrationTestCode</testSourceDirectory>
+                <testResources>
+                    <testResource>
+                        <directory>IntegrationTestCode</directory>
+                        <excludes>
+                            <exclude>**/*.java</exclude>
+                        </excludes>
+                    </testResource>
+                </testResources>
+        -->
+        <!--  End integration test-->
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
