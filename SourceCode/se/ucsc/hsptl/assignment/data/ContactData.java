@@ -25,9 +25,21 @@ public class ContactData
     return mobilePhone;
   }
 
+  public ContactData setMobilePhone(String mobilePhone)
+  {
+    this.mobilePhone = mobilePhone;
+    return this;
+  }
+
   public String getHomePhone()
   {
     return homePhone;
+  }
+
+  public ContactData setHomePhone(String homePhone)
+  {
+    this.homePhone = homePhone;
+    return this;
   }
 
   public String getOfficePhone()
@@ -35,14 +47,32 @@ public class ContactData
     return officePhone;
   }
 
+  public ContactData setOfficePhone(String officePhone)
+  {
+    this.officePhone = officePhone;
+    return this;
+  }
+
   public String[] getAddress()
   {
     return address;
   }
 
+  public ContactData setAddress(String[] address)
+  {
+    this.address = address;
+    return this;
+  }
+
   public String getEmail()
   {
     return email;
+  }
+
+  public ContactData setEmail(String email)
+  {
+    this.email = email;
+    return this;
   }
 
   public String getAddressAsString()

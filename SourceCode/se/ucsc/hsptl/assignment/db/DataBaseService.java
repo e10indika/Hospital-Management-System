@@ -29,4 +29,14 @@ public class DataBaseService
   {
     return dataBaseQueryType.getQueryInstance().executeQuery(area, fields, valueString, condition);
   }
+
+  public static int executeQuery(String area,
+                                 String[] fields,
+                                 String[] values,
+                                 String condition,
+                                 DataBaseQueryType dataBaseQueryType)
+    throws DataBaseException
+  {
+    return dataBaseQueryType.getQueryInstance().executeQuery(area, fields, values, condition);
+  }
 }

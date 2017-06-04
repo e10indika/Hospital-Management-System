@@ -12,12 +12,19 @@ public class DoctorData extends EmployeeData implements Data
   public DoctorData(String doctorId, String employeeId)
   {
     setEmployeeId(employeeId);
+
     this.doctorId = doctorId;
   }
 
   public String getDoctorId()
   {
     return doctorId;
+  }
+
+  public DoctorData setDoctorId(String doctorId)
+  {
+    this.doctorId = doctorId;
+    return this;
   }
 
   public String getDesignation()

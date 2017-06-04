@@ -27,6 +27,12 @@ public class InsertQuery extends AbstractQuery
     return executeUpdate(statement);
   }
 
+  @Override
+  public int executeQuery(String area, String[] fields, String[] values, String condition) throws DataBaseException
+  {
+    return 0;
+  }
+
   private String createSqlQuery(String area, String[] fields, String values)
   {
     StringBuffer stringBuffer = new StringBuffer("INSERT INTO ");

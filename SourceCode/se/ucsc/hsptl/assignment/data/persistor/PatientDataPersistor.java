@@ -62,7 +62,22 @@ public class PatientDataPersistor implements DataPersistor<PatientData>
   @Override
   public String update(PatientData patientData) throws DataPersistorException
   {
-    return null;
+    try
+    {
+      DataBaseService
+        .executeQuery(SQLConstants.PATIENT_TABLE,
+                      new String[] { PatientDTO.getPatientTableFields()[10], PatientDTO.getPatientTableFields()[11] },
+                      new String[] { getFormattedValue(CommonToolkit.getCurrentDate()),
+                                     getFormattedValue(CommonToolkit.isLatest(false)) },
+                      "patientId = '" + patientData.getPatientId() + "'",
+                      DataBaseQueryType.UPDATE);
+      int value = saveAndGet(patientData);
+      return String.valueOf(value);
+    }
+    catch (DataBaseException e)
+    {
+      throw new DataPersistorException("Patient data saving is failed for patient =", e);
+    }
   }
 
   private String getPatientValues(PatientData patientData)

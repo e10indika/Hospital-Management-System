@@ -11,6 +11,12 @@ public class PatientData implements Data
   private String patientId;
   private String bloodGroup;
 
+  public PatientData setPatientId(String patientId)
+  {
+    this.patientId = patientId;
+    return this;
+  }
+
   public PatientData(String patientId)
   {
     this.patientId = patientId;

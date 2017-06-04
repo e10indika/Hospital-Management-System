@@ -26,6 +26,12 @@ public class DeleteQuery extends AbstractQuery
     throw new DataBaseException("Method is not implemented");
   }
 
+  @Override
+  public int executeQuery(String area, String[] fields, String[] values, String condition) throws DataBaseException
+  {
+    return 0;
+  }
+
   private String createSqlQuery(String area, String condition)
   {
     StringBuffer stringBuffer = new StringBuffer("DELETE From ");
