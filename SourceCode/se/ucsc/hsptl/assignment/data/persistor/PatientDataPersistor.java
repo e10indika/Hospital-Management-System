@@ -1,7 +1,6 @@
 package se.ucsc.hsptl.assignment.data.persistor;
 
-import java.sql.SQLException;
-
+import se.ucsc.hsptl.assignment.common.CommonToolkit;
 import se.ucsc.hsptl.assignment.data.PatientData;
 import se.ucsc.hsptl.assignment.db.DataBaseQueryType;
 import se.ucsc.hsptl.assignment.db.DataBaseService;
@@ -48,12 +47,11 @@ public class PatientDataPersistor implements DataPersistor<PatientData>
   {
     try
     {
-      return DataBaseService
-        .executeQuery(SQLConstants.PATIENT_TABLE,
-                      PatientDTO.getPatientTableFields(),
-                      getPatientValues(patientData),
-                      null,
-                      DataBaseQueryType.INSERT);
+      return DataBaseService.executeQuery(SQLConstants.PATIENT_TABLE,
+                                          PatientDTO.getPatientTableFields(),
+                                          getPatientValues(patientData),
+                                          null,
+                                          DataBaseQueryType.INSERT);
     }
     catch (DataBaseException e)
     {
@@ -74,7 +72,14 @@ public class PatientDataPersistor implements DataPersistor<PatientData>
       .append(getFormattedValue(patientData.getName().getFirstName()))
       .append(getFormattedValue(patientData.getName().getMiddleName()))
       .append(getFormattedValue(patientData.getName().getLastName()))
-      .append(getFormattedValue(patientData.getContactData().getEmail()));
-    return stringBuffer.toString();
+      .append(getFormattedValue(patientData.getName().getTitle()))
+      .append(getFormattedValue(patientData.getPersonData().getBirthDate()))
+      .append(getFormattedValue(patientData.getBloodGroup()))
+      .append(getFormattedValue(patientData.getContactData().getAddressAsString()))
+      .append(getFormattedValue(patientData.getContactData().getHomePhone()))
+      .append(getFormattedValue(patientData.getPersonData().getGender()))
+      .append(getFormattedValue(CommonToolkit.getCurrentDate()))
+      .append(getFormattedValue(CommonToolkit.isLatest(true)));
+    return removeLastComma(stringBuffer).toString();
   }
 }

@@ -44,4 +44,18 @@ public class ContactData
   {
     return email;
   }
+
+  public String getAddressAsString()
+  {
+    if (address.length > 0)
+    {
+      StringBuffer addresses = new StringBuffer();
+      for (String addr : address)
+      {
+        addresses.append(addr).append(",");
+      }
+      return addresses.substring(0, addresses.lastIndexOf(","));
+    }
+    return new String();
+  }
 }

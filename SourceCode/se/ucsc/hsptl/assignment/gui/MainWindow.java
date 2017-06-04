@@ -1,9 +1,13 @@
 package se.ucsc.hsptl.assignment.gui;
 
+import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class MainWindow extends JFrame
@@ -21,7 +25,23 @@ public class MainWindow extends JFrame
   public MainWindow()
   {
     jbInit();
+    setUpMenuAction();
 
+  }
+
+  private void setUpMenuAction()
+  {
+    mnItmMyProfile.addActionListener(new AbstractAction()
+      {
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+          UserRegistration userRegistration = new UserRegistration();
+          Test.getDesktopPane().add(userRegistration);
+          add(Test.getDesktopPane());
+          userRegistration.setVisible(true);
+        }
+      });
   }
 
   private void jbInit()

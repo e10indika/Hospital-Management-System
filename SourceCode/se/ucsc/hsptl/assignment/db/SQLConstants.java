@@ -13,8 +13,8 @@ public class SQLConstants
   /**
    * DataBase table name as Constants
    */
-  public static final String PATIENT_TABLE = "ASC_Customer";
-  public static final String ATTENDANT_TABLE = "ASC_Attendant";
-  public static final String ATTENDANCE_TABLE = "ASC_Attendance";
+  public static final String PATIENT_TABLE = "HMS_Patient";
+  public static final String ATTENDANT_TABLE = "HMS_Attendant";
+  public static final String ATTENDANCE_TABLE = "HMS_Attendance";
   public static final String USER_LOGIN_TABLE = "HMS_UserLogin";
 }

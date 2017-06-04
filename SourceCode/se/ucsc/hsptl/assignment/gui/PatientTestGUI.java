@@ -22,7 +22,7 @@ import se.ucsc.hsptl.assignment.service.PassWordService;
  */
 public class PatientTestGUI
 {
-  PatientData patientData = new PatientData();
+  PatientData patientData = new PatientData("1");
 
   public PatientTestGUI()
   {
