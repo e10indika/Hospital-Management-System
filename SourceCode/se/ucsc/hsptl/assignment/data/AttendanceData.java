@@ -3,7 +3,7 @@ package se.ucsc.hsptl.assignment.data;
 import se.ucsc.hsptl.assignment.common.AttendanceType;
 
 /**
- * Created by Indika on 5/4/2017.
+ * Created by Pathum on 5/4/2017.
  */
 public class AttendanceData implements Data
 {

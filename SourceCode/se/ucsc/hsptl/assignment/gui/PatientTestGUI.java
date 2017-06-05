@@ -18,7 +18,7 @@ import se.ucsc.hsptl.assignment.exception.PassWordServiceException;
 import se.ucsc.hsptl.assignment.service.PassWordService;
 
 /**
- * Created by Indika on 4/30/2017.
+ * Created by Pathum on 4/30/2017.
  */
 public class PatientTestGUI
 {

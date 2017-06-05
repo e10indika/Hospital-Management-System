@@ -13,7 +13,7 @@ import javax.crypto.spec.SecretKeySpec;
 import se.ucsc.hsptl.assignment.exception.PassWordServiceException;
 
 /**
- * Created by Indika on 5/7/2017.
+ * Created by Pathum on 5/7/2017.
  */
 public class PassWordService
 {

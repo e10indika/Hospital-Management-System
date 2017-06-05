@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import se.ucsc.hsptl.assignment.exception.DataBaseException;
 
 /**
- * Created by Indika on 4/29/2017.
+ * Created by Pathum on 4/29/2017.
  */
 public class DeleteQuery extends AbstractQuery
 {

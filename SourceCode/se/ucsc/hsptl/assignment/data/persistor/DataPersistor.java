@@ -10,7 +10,7 @@ import se.ucsc.hsptl.assignment.exception.DataPersistorException;
 import static se.ucsc.hsptl.assignment.db.SQLConstants.COMMA_SPACE;
 
 /**
- * Created by Indika on 4/30/2017.
+ * Created by Pathum on 4/30/2017.
  */
 public interface DataPersistor<D extends Data>
 {

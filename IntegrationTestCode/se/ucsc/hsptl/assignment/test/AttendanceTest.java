@@ -14,7 +14,7 @@ import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertNotNull;
 
 /**
- * Created by Indika on 6/5/2017.
+ * Created by Pathum on 6/5/2017.
  */
 public class AttendanceTest
 {

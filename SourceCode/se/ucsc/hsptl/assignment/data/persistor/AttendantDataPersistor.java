@@ -10,7 +10,7 @@ import se.ucsc.hsptl.assignment.exception.DataBaseException;
 import se.ucsc.hsptl.assignment.exception.DataPersistorException;
 
 /**
- * Created by Indika on 4/30/2017.
+ * Created by Pathum on 4/30/2017.
  */
 public class AttendantDataPersistor implements DataPersistor<AttendantData>
 {

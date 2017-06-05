@@ -1,7 +1,7 @@
 package se.ucsc.hsptl.assignment.common;
 
 /**
- * Created by Indika on 6/4/2017.
+ * Created by Pathum on 6/4/2017.
  */
 public enum Gender
 {

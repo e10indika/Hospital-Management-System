@@ -14,7 +14,7 @@ import se.ucsc.hsptl.assignment.exception.DataPersistorException;
 import java.util.List;
 
 /**
- * Created by Indika on 5/7/2017.
+ * Created by Pathum on 5/7/2017.
  */
 public class AttendanceService
 {

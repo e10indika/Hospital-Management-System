@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.sql.Time;
 
 /**
- * Created by Indika on 5/4/2017.
+ * Created by Pathum on 5/4/2017.
  */
 public class AttendanceDTO
 {

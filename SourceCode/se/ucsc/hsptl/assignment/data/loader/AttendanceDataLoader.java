@@ -19,7 +19,7 @@ import se.ucsc.hsptl.assignment.exception.DataBaseException;
 import se.ucsc.hsptl.assignment.exception.DataLoaderException;
 
 /**
- * Created by Indika on 5/4/2017.
+ * Created by Pathum on 5/4/2017.
  */
 public class AttendanceDataLoader implements DataLoader<AttendanceData>
 {

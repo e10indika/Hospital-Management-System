@@ -3,7 +3,7 @@ package se.ucsc.hsptl.assignment.data;
 import java.sql.Date;
 
 /**
- * Created by Indika on 5/7/2017.
+ * Created by Pathum on 5/7/2017.
  */
 public class UserLoginData implements Data
 {

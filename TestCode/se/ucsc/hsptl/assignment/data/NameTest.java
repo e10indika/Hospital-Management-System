@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
- * Created by Indika on 5/2/2017.
+ * Created by Pathum on 5/2/2017.
  */
 public class NameTest
 {

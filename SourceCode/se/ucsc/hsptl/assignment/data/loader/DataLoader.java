@@ -6,7 +6,7 @@ import se.ucsc.hsptl.assignment.exception.DataLoaderException;
 import java.util.List;
 
 /**
- * Created by Indika on 4/30/2017.
+ * Created by Pathum on 4/30/2017.
  */
 public interface DataLoader<D extends Data>
 {

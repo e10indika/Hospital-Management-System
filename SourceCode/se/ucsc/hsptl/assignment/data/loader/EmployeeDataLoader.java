@@ -18,7 +18,7 @@ import se.ucsc.hsptl.assignment.exception.DataBaseException;
 import se.ucsc.hsptl.assignment.exception.DataLoaderException;
 
 /**
- * Created by Indika on 6/5/2017.
+ * Created by Pathum on 6/5/2017.
  */
 public class EmployeeDataLoader implements DataLoader<EmployeeData>
 {

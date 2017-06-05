@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by Indika on 6/4/2017.
+ * Created by Pathum on 6/4/2017.
  */
 public class CommonToolkit
 {
