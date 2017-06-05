@@ -8,7 +8,7 @@ public class ContactData
   private String mobilePhone;
   private String homePhone;
   private String officePhone;
-  private String[] address;
+  private String[] address = new String[3];
   private String email;
 
   public ContactData(String mobilePhone, String homePhone, String officePhone, String[] address, String email)
@@ -16,7 +16,7 @@ public class ContactData
     this.mobilePhone = mobilePhone;
     this.homePhone = homePhone;
     this.officePhone = officePhone;
-    this.address = address;
+    setAddress(address);
     this.email = email;
   }
 
@@ -60,7 +60,13 @@ public class ContactData
 
   public ContactData setAddress(String[] address)
   {
-    this.address = address;
+    for (int i = 0; i < address.length; i++)
+    {
+      if (address[i] != null)
+      {
+        this.address[i] = address[1];
+      }
+    }
     return this;
   }
 

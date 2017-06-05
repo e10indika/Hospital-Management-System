@@ -1,7 +1,7 @@
 package se.ucsc.hsptl.assignment.db.dto;
 
-import java.sql.Time;
 import java.sql.Date;
+import java.sql.Time;
 
 /**
  * Created by Indika on 5/4/2017.

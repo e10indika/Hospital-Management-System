@@ -9,11 +9,16 @@ public class DoctorData extends EmployeeData implements Data
 
   private String designation;
 
-  public DoctorData(String doctorId, String employeeId)
+  public DoctorData(String doctorId,
+                    String designation,
+                    Name name,
+                    ContactData contactData,
+                    PersonData personData,
+                    String employeeId)
   {
-    setEmployeeId(employeeId);
-
+    super(employeeId, name, contactData, personData);
     this.doctorId = doctorId;
+    this.designation = designation;
   }
 
   public String getDoctorId()
@@ -35,6 +40,14 @@ public class DoctorData extends EmployeeData implements Data
   public DoctorData setDesignation(String designation)
   {
     this.designation = designation;
+    return this;
+  }
+
+  public DoctorData setEmployeeData(EmployeeData employeeData)
+  {
+    this.name = employeeData.getName();
+    this.contactData = employeeData.getContactData();
+    this.personData = employeeData.getPersonData();
     return this;
   }
 }

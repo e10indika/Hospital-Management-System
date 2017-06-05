@@ -32,7 +32,7 @@ public class PatientDataPersistor implements DataPersistor<PatientData>
     try
     {
       DataBaseService.executeQuery(SQLConstants.PATIENT_TABLE,
-                                   PatientDTO.getPatientTableFields(),
+                                   PatientDTO.getTableFields(),
                                    getPatientValues(patientData),
                                    null,
                                    DataBaseQueryType.INSERT);
@@ -49,7 +49,7 @@ public class PatientDataPersistor implements DataPersistor<PatientData>
     try
     {
       return DataBaseService.executeQuery(SQLConstants.PATIENT_TABLE,
-                                          PatientDTO.getPatientTableFields(),
+                                          PatientDTO.getTableFields(),
                                           getPatientValues(patientData),
                                           null,
                                           DataBaseQueryType.INSERT);
@@ -67,7 +67,7 @@ public class PatientDataPersistor implements DataPersistor<PatientData>
     {
       DataBaseService
         .executeQuery(SQLConstants.PATIENT_TABLE,
-                      new String[] { PatientDTO.getPatientTableFields()[10], PatientDTO.getPatientTableFields()[11] },
+                      new String[] { PatientDTO.getTableFields()[10], PatientDTO.getTableFields()[11] },
                       new String[] { getFormattedValue(CommonToolkit.getCurrentDate()),
                                      getFormattedValue(CommonToolkit.isLatest(false)) },
                       SQLToolKit
@@ -98,6 +98,6 @@ public class PatientDataPersistor implements DataPersistor<PatientData>
       .append(getFormattedValue(patientData.getPersonData().getGender()))
       .append(getFormattedValue(CommonToolkit.getCurrentDate()))
       .append(getFormattedValue(CommonToolkit.isLatest(true)));
-    return removeLastComma(stringBuffer).toString();
+    return formatSql(stringBuffer).toString();
   }
 }

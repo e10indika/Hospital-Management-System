@@ -1,7 +1,5 @@
 package se.ucsc.hsptl.assignment.data.persistor;
 
-import java.sql.SQLException;
-
 import se.ucsc.hsptl.assignment.data.AttendantData;
 import se.ucsc.hsptl.assignment.db.DataBaseQueryType;
 import se.ucsc.hsptl.assignment.db.DataBaseService;
@@ -28,7 +26,7 @@ public class AttendantDataPersistor implements DataPersistor<AttendantData>
     try
     {
       DataBaseService.executeQuery(SQLConstants.PATIENT_TABLE,
-                                   PatientDTO.getPatientTableFields(),
+                                   PatientDTO.getTableFields(),
                                    getAttendantValues(attendantData),
                                    null,
                                    DataBaseQueryType.INSERT);

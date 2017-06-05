@@ -11,12 +11,12 @@ public class PatientDTO
     new String[] { "patientId", "firstName", "middleName", "lastName", "title", "birthDate", "bloodgroup", "address",
                    "contactNumber", "gender", "lastModifiedDate", "latest" };
 
-  public static String[] getPatientTableFields()
+  public static String[] getTableFields()
   {
     return FIELDS;
   }
 
-  public static String[] getPatientTableAllFields()
+  public static String[] getTableAllFields()
   {
     return ObjectArrays.concat("primaryKey", FIELDS);
   }

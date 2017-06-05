@@ -6,7 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import se.ucsc.hsptl.assignment.data.DoctorData;
+import se.ucsc.hsptl.assignment.db.DataBaseQueryType;
+import se.ucsc.hsptl.assignment.db.DataBaseService;
+import se.ucsc.hsptl.assignment.db.SQLConstants;
 import se.ucsc.hsptl.assignment.db.SQLToolKit;
+import se.ucsc.hsptl.assignment.db.dto.DoctorDTO;
 import se.ucsc.hsptl.assignment.exception.DataBaseException;
 import se.ucsc.hsptl.assignment.exception.DataLoaderException;
 
@@ -15,19 +19,24 @@ import se.ucsc.hsptl.assignment.exception.DataLoaderException;
  */
 public class DoctorDataLoader implements DataLoader<DoctorData>
 {
+  private static final DoctorDataLoader INSTANCE = new DoctorDataLoader();
+
+  private DoctorDataLoader()
+  {
+
+  }
+
+  public static DoctorDataLoader getINSTANCE()
+  {
+    return INSTANCE;
+  }
+
   @Override
   public DoctorData loadById(String id) throws DataLoaderException
   {
-    ResultSet resultSet;
-    try
-    {
-      resultSet = getDoctorDataResult(SQLToolKit.getWhereClause("doctorId", id));
-    }
-    catch (DataBaseException e)
-    {
-      throw new DataLoaderException("Doctor Data loading is failed", e);
-    }
-    return getDoctorData(resultSet).get(0);
+    DoctorData doctorData = getDoctorData(id);
+    return doctorData.setEmployeeData(EmployeeDataLoader.getInstance().loadById(doctorData.getEmployeeId()));
+
   }
 
   @Override
@@ -43,6 +52,20 @@ public class DoctorDataLoader implements DataLoader<DoctorData>
       throw new DataLoaderException("Doctor Data loading is failed", e);
     }
     return getDoctorData(resultSet);
+  }
+
+  private DoctorData getDoctorData(String id) throws DataLoaderException
+  {
+    ResultSet resultSet;
+    try
+    {
+      resultSet = getDoctorDataResult(SQLToolKit.getWhereClause("doctorId", id));
+    }
+    catch (DataBaseException e)
+    {
+      throw new DataLoaderException("Doctor Data loading is failed", e);
+    }
+    return getDoctorData(resultSet).get(0);
   }
 
   private List<DoctorData> getDoctorData(ResultSet resultSet) throws DataLoaderException
@@ -62,13 +85,30 @@ public class DoctorDataLoader implements DataLoader<DoctorData>
     return doctorDataList;
   }
 
-  private DoctorData getDoctorDataByRow(ResultSet resultSet)
+  private DoctorData getDoctorDataByRow(ResultSet resultSet) throws SQLException
   {
-    return null;
+    String[] fieldNames = DoctorDTO.getTableAllFields();
+    DoctorData doctorData = new DoctorData(resultSet.getString(fieldNames[1]),
+                                           resultSet.getString(fieldNames[2]),
+                                           null,
+                                           null,
+                                           null,
+                                           resultSet.getString(fieldNames[3]));
+    return doctorData;
   }
 
-  private ResultSet getDoctorDataResult(String doctorId) throws DataLoaderException
+  private ResultSet getDoctorDataResult(String condition) throws DataLoaderException
   {
-    return null;
+    try
+    {
+      return DataBaseService.executeQuery(SQLConstants.DOCTOR_TABLE,
+                                          DoctorDTO.getTableAllFields(),
+                                          condition,
+                                          DataBaseQueryType.SELECT);
+    }
+    catch (DataBaseException e)
+    {
+      throw new DataLoaderException("Patient Data loading failed", e);
+    }
   }
 }

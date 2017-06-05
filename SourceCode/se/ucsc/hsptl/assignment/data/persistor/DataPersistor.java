@@ -7,13 +7,13 @@ import java.util.Date;
 import se.ucsc.hsptl.assignment.data.Data;
 import se.ucsc.hsptl.assignment.exception.DataPersistorException;
 
+import static se.ucsc.hsptl.assignment.db.SQLConstants.COMMA_SPACE;
+
 /**
  * Created by Indika on 4/30/2017.
  */
 public interface DataPersistor<D extends Data>
 {
-  String COMMA_SPACE = ", ";
-
   void save(D d) throws DataPersistorException;
 
   int saveAndGet(D d) throws DataPersistorException;
@@ -29,7 +29,7 @@ public interface DataPersistor<D extends Data>
     return "'".concat(value).concat("'").concat(COMMA_SPACE);
   }
 
-  default String removeLastComma(StringBuffer stringBuffer)
+  default String formatSql(StringBuffer stringBuffer)
   {
     return stringBuffer.substring(0, stringBuffer.lastIndexOf(COMMA_SPACE));
   }

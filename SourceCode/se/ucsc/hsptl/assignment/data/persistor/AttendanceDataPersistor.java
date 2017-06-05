@@ -31,7 +31,7 @@ public class AttendanceDataPersistor implements DataPersistor<AttendanceData>
     try
     {
       DataBaseService.executeQuery(SQLConstants.PATIENT_TABLE,
-                                   PatientDTO.getPatientTableFields(),
+                                   PatientDTO.getTableFields(),
                                    getAttendanceValues(attendanceData),
                                    null,
                                    DataBaseQueryType.INSERT);
@@ -49,7 +49,7 @@ public class AttendanceDataPersistor implements DataPersistor<AttendanceData>
     try
     {
       return DataBaseService.executeQuery(SQLConstants.ATTENDANCE_TABLE,
-                                          AttendanceDTO.getAttendanceTableFields(),
+                                          AttendanceDTO.getTableFields(),
                                           getAttendanceValues(attendanceData),
                                           null,
                                           DataBaseQueryType.INSERT);
