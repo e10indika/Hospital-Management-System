@@ -68,7 +68,7 @@ public class PatientDataPersistor implements DataPersistor<PatientData>
       DataBaseService
         .executeQuery(SQLConstants.PATIENT_TABLE,
                       new String[] { PatientDTO.getTableFields()[10], PatientDTO.getTableFields()[11] },
-                      new String[] { getFormattedValue(CommonToolkit.getCurrentDate()),
+                      new String[] { getFormattedValue(CommonToolkit.getCurrentDateTime()),
                                      getFormattedValue(CommonToolkit.isLatest(false)) },
                       SQLToolKit
                         .getWhereClause(new String[] { "patientId", "latest" },
@@ -96,7 +96,7 @@ public class PatientDataPersistor implements DataPersistor<PatientData>
       .append(getFormattedValue(patientData.getContactData().getAddressAsString()))
       .append(getFormattedValue(patientData.getContactData().getHomePhone()))
       .append(getFormattedValue(patientData.getPersonData().getGender()))
-      .append(getFormattedValue(CommonToolkit.getCurrentDate()))
+      .append(getFormattedValue(CommonToolkit.getCurrentDateTime()))
       .append(getFormattedValue(CommonToolkit.isLatest(true)));
     return formatSql(stringBuffer).toString();
   }

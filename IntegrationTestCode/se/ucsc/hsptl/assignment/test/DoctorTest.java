@@ -22,7 +22,7 @@ import se.ucsc.hsptl.assignment.exception.DataPersistorException;
  */
 public class DoctorTest
 {
-  //@Test
+  @Test
   public void testSaveDoctor()
   {
     DoctorData doctorData = getDoctorData();

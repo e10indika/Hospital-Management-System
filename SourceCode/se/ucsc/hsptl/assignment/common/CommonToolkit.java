@@ -1,5 +1,7 @@
 package se.ucsc.hsptl.assignment.common;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -7,7 +9,10 @@ import java.util.Date;
  */
 public class CommonToolkit
 {
-  public static Date getCurrentDate()
+  private static final Format TIME_FORMAT = new SimpleDateFormat("hh:mm:ss");
+  private static final Format DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+
+  public static Date getCurrentDateTime()
   {
     return new Date();
   }
@@ -15,5 +20,15 @@ public class CommonToolkit
   public static String isLatest(boolean latest)
   {
     return latest ? "1" : "0";
+  }
+
+  public static String getCurrentTime()
+  {
+    return TIME_FORMAT.format(getCurrentDateTime());
+  }
+
+  public static String getCurrentDate()
+  {
+    return DATE_FORMAT.format(getCurrentDateTime());
   }
 }

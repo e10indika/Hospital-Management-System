@@ -2,12 +2,13 @@ package se.ucsc.hsptl.assignment.data.loader;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import se.ucsc.hsptl.assignment.common.AttendanceType;
+import se.ucsc.hsptl.assignment.common.CommonToolkit;
 import se.ucsc.hsptl.assignment.data.AttendanceData;
 import se.ucsc.hsptl.assignment.db.DataBaseQueryType;
 import se.ucsc.hsptl.assignment.db.DataBaseService;
@@ -54,7 +55,7 @@ public class AttendanceDataLoader implements DataLoader<AttendanceData>
     return getAttendanceData(resultSet);
   }
 
-  public AttendanceData loadByEmployeeId(String employeeId, int type) throws DataLoaderException
+  public AttendanceData loadByEmployeeId(String employeeId, int type, String date) throws DataLoaderException
   {
     ResultSet resultSet;
     try
@@ -62,14 +63,19 @@ public class AttendanceDataLoader implements DataLoader<AttendanceData>
       Map<String, String> mapElements = new HashMap<>();
       mapElements.put("employeeId", employeeId);
       mapElements.put("type", String.valueOf(type));
-      mapElements.put("date", String.valueOf(LocalDate.now()));
+      mapElements.put("date", date);
       resultSet = getAttendanceDataResult(SQLToolKit.getWhereClause(mapElements));
     }
     catch (DataBaseException e)
     {
       throw new DataLoaderException("Attendance Data loading is failed", e);
     }
-    return getAttendanceData(resultSet).get(0);
+    List<AttendanceData> attendanceDatas = getAttendanceData(resultSet);
+    if (attendanceDatas.size() > 0)
+    {
+      return attendanceDatas.get(0);
+    }
+    return null;
   }
 
   private List<AttendanceData> getAttendanceData(ResultSet resultSet) throws DataLoaderException
@@ -91,8 +97,10 @@ public class AttendanceDataLoader implements DataLoader<AttendanceData>
 
   private AttendanceData getAttendanceDataByRow(ResultSet resultSet) throws SQLException
   {
-    return new AttendanceData().setAttendanceId(resultSet.getString(1)).setEmployeeId(resultSet.getString(2))
-      .setType(resultSet.getInt(3)).setDate(resultSet.getDate(4)).setTime(resultSet.getTime(5));
+    return new AttendanceData("12345",
+                              AttendanceType.IN,
+                              CommonToolkit.getCurrentDate(),
+                              CommonToolkit.getCurrentTime());
   }
 
   private ResultSet getAttendanceDataResult(String condition) throws DataLoaderException

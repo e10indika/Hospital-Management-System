@@ -8,7 +8,7 @@ import java.sql.Time;
  */
 public class AttendanceDTO
 {
-  private static final String[] FIELDS = new String[] { "attendanceId", "employeeId", "type", "date", "time" };
+  private static final String[] FIELDS = new String[] { "employeeId", "type", "date", "time", "latest" };
   private long attendanceId;
 
   private String employeeId;

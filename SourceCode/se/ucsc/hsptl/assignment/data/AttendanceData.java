@@ -1,7 +1,6 @@
 package se.ucsc.hsptl.assignment.data;
 
-import java.sql.Date;
-import java.sql.Time;
+import se.ucsc.hsptl.assignment.common.AttendanceType;
 
 /**
  * Created by Indika on 5/4/2017.
@@ -14,12 +13,16 @@ public class AttendanceData implements Data
 
   private int type;
 
-  private Date date;
+  private String date;
 
-  private Time time;
+  private String time;
 
-  public AttendanceData()
+  public AttendanceData(String employeeId, AttendanceType type, String currentDate, String currentTime)
   {
+    this.employeeId = employeeId;
+    this.type = type.getValue();
+    this.date = currentDate;
+    this.time = currentTime;
   }
 
   public String getAttendanceId()
@@ -55,23 +58,23 @@ public class AttendanceData implements Data
     return this;
   }
 
-  public Date getDate()
+  public String getDate()
   {
     return date;
   }
 
-  public AttendanceData setDate(Date date)
+  public AttendanceData setDate(String date)
   {
     this.date = date;
     return this;
   }
 
-  public Time getTime()
+  public String getTime()
   {
     return time;
   }
 
-  public AttendanceData setTime(Time time)
+  public AttendanceData setTime(String time)
   {
     this.time = time;
     return this;

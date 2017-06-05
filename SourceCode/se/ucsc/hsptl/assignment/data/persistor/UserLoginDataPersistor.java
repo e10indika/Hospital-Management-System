@@ -30,7 +30,7 @@ public class UserLoginDataPersistor implements DataPersistor<UserLoginData>
     try
     {
       DataBaseService.executeQuery(SQLConstants.USER_LOGIN_TABLE,
-                                   UserLoginDTO.getTableFieldsToInsert(),
+                                   UserLoginDTO.getTableAllFields(),
                                    getUserLoginDTOValues(userLoginData),
                                    null,
                                    DataBaseQueryType.INSERT);

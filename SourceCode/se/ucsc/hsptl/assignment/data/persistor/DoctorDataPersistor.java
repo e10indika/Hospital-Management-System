@@ -76,7 +76,7 @@ public class DoctorDataPersistor implements DataPersistor<DoctorData>
     {
       DataBaseService.executeQuery(SQLConstants.DOCTOR_TABLE,
                                    new String[] { "lastModifiedDate", "latest" },
-                                   new String[] { getFormattedValue(CommonToolkit.getCurrentDate()),
+                                   new String[] { getFormattedValue(CommonToolkit.getCurrentDateTime()),
                                                   getFormattedValue(CommonToolkit.isLatest(false)) },
                                    SQLToolKit.getWhereClause(new String[] { "doctorId", "latest" },
                                                              new String[] { doctorData.getDoctorId(),
@@ -96,7 +96,7 @@ public class DoctorDataPersistor implements DataPersistor<DoctorData>
     StringBuffer stringBuffer = new StringBuffer();
     stringBuffer.append(getFormattedValue(doctorData.getDoctorId()))
       .append(getFormattedValue(doctorData.getDesignation())).append(getFormattedValue(doctorData.getEmployeeId()))
-      .append(getFormattedValue(CommonToolkit.getCurrentDate()))
+      .append(getFormattedValue(CommonToolkit.getCurrentDateTime()))
       .append(getFormattedValue(CommonToolkit.isLatest(true)));
     return formatSql(stringBuffer).toString();
   }

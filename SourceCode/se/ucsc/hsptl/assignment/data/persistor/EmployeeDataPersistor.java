@@ -70,7 +70,7 @@ public class EmployeeDataPersistor implements DataPersistor<EmployeeData>
     {
       DataBaseService.executeQuery(SQLConstants.EMPLOYEE_TABLE,
                                    new String[] { "lastModifiedDate", "latest" },
-                                   new String[] { getFormattedValue(CommonToolkit.getCurrentDate()),
+                                   new String[] { getFormattedValue(CommonToolkit.getCurrentDateTime()),
                                                   getFormattedValue(CommonToolkit.isLatest(false)) },
                                    SQLToolKit.getWhereClause(new String[] { "employeeId", "latest" },
                                                              new String[] { employeeData.getEmployeeId(),
@@ -102,7 +102,7 @@ public class EmployeeDataPersistor implements DataPersistor<EmployeeData>
       .append(getFormattedValue(employeeData.getContactData().getEmail()))
       .append(getFormattedValue(employeeData.getPersonData().getGender()))
       .append(getFormattedValue(employeeData.getPersonData().getNationality()))
-      .append(getFormattedValue(CommonToolkit.getCurrentDate()))
+      .append(getFormattedValue(CommonToolkit.getCurrentDateTime()))
       .append(getFormattedValue(CommonToolkit.isLatest(true)));
     return formatSql(stringBuffer).toString();
   }
