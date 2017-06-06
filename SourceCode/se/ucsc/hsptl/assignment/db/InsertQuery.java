@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Created by Indika on 4/29/2017.
+ * Created by Pathum on 4/29/2017.
  */
 public class InsertQuery extends AbstractQuery
 {
@@ -25,6 +25,12 @@ public class InsertQuery extends AbstractQuery
     String sqlQuery = createSqlQuery(area, fields, valueString);
     PreparedStatement statement = createPrepareStatement(sqlQuery);
     return executeUpdate(statement);
+  }
+
+  @Override
+  public int executeQuery(String area, String[] fields, String[] values, String condition) throws DataBaseException
+  {
+    return 0;
   }
 
   private String createSqlQuery(String area, String[] fields, String values)

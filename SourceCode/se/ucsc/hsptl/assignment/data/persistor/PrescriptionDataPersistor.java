@@ -4,7 +4,7 @@ import se.ucsc.hsptl.assignment.data.PrescriptionData;
 import se.ucsc.hsptl.assignment.exception.DataPersistorException;
 
 /**
- * Created by Indika on 4/30/2017.
+ * Created by Pathum on 4/30/2017.
  */
 public class PrescriptionDataPersistor implements DataPersistor<PrescriptionData>
 {

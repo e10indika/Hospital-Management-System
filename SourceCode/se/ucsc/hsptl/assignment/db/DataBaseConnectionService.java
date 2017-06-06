@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * Created by Indika on 4/28/2017.
+ * Created by Pathum on 4/28/2017.
  */
 public class DataBaseConnectionService
 {

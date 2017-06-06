@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Created by Indika on 4/29/2017.
+ * Created by Pathum on 4/29/2017.
  */
 public abstract class AbstractQuery implements Query
 {

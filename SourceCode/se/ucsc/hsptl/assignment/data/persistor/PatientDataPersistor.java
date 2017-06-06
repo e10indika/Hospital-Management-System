@@ -1,17 +1,17 @@
 package se.ucsc.hsptl.assignment.data.persistor;
 
-import java.sql.SQLException;
-
+import se.ucsc.hsptl.assignment.common.CommonToolkit;
 import se.ucsc.hsptl.assignment.data.PatientData;
 import se.ucsc.hsptl.assignment.db.DataBaseQueryType;
 import se.ucsc.hsptl.assignment.db.DataBaseService;
 import se.ucsc.hsptl.assignment.db.SQLConstants;
+import se.ucsc.hsptl.assignment.db.SQLToolKit;
 import se.ucsc.hsptl.assignment.db.dto.PatientDTO;
 import se.ucsc.hsptl.assignment.exception.DataBaseException;
 import se.ucsc.hsptl.assignment.exception.DataPersistorException;
 
 /**
- * Created by Indika on 4/29/2017.
+ * Created by Pathum on 4/29/2017.
  */
 public class PatientDataPersistor implements DataPersistor<PatientData>
 {
@@ -32,7 +32,7 @@ public class PatientDataPersistor implements DataPersistor<PatientData>
     try
     {
       DataBaseService.executeQuery(SQLConstants.PATIENT_TABLE,
-                                   PatientDTO.getPatientTableFields(),
+                                   PatientDTO.getTableFields(),
                                    getPatientValues(patientData),
                                    null,
                                    DataBaseQueryType.INSERT);
@@ -48,12 +48,11 @@ public class PatientDataPersistor implements DataPersistor<PatientData>
   {
     try
     {
-      return DataBaseService
-        .executeQuery(SQLConstants.PATIENT_TABLE,
-                      PatientDTO.getPatientTableFields(),
-                      getPatientValues(patientData),
-                      null,
-                      DataBaseQueryType.INSERT);
+      return DataBaseService.executeQuery(SQLConstants.PATIENT_TABLE,
+                                          PatientDTO.getTableFields(),
+                                          getPatientValues(patientData),
+                                          null,
+                                          DataBaseQueryType.INSERT);
     }
     catch (DataBaseException e)
     {
@@ -64,7 +63,24 @@ public class PatientDataPersistor implements DataPersistor<PatientData>
   @Override
   public String update(PatientData patientData) throws DataPersistorException
   {
-    return null;
+    try
+    {
+      DataBaseService
+        .executeQuery(SQLConstants.PATIENT_TABLE,
+                      new String[] { PatientDTO.getTableFields()[10], PatientDTO.getTableFields()[11] },
+                      new String[] { getFormattedValue(CommonToolkit.getCurrentDateTime()),
+                                     getFormattedValue(CommonToolkit.isLatest(false)) },
+                      SQLToolKit
+                        .getWhereClause(new String[] { "patientId", "latest" },
+                                        new String[] { patientData.getPatientId(), CommonToolkit.isLatest(true) }),
+                      DataBaseQueryType.UPDATE);
+      int value = saveAndGet(patientData);
+      return String.valueOf(value);
+    }
+    catch (DataBaseException e)
+    {
+      throw new DataPersistorException("Patient data saving is failed for patient =", e);
+    }
   }
 
   private String getPatientValues(PatientData patientData)
@@ -74,7 +90,14 @@ public class PatientDataPersistor implements DataPersistor<PatientData>
       .append(getFormattedValue(patientData.getName().getFirstName()))
       .append(getFormattedValue(patientData.getName().getMiddleName()))
       .append(getFormattedValue(patientData.getName().getLastName()))
-      .append(getFormattedValue(patientData.getContactData().getEmail()));
-    return stringBuffer.toString();
+      .append(getFormattedValue(patientData.getName().getTitle()))
+      .append(getFormattedValue(patientData.getPersonData().getBirthDate()))
+      .append(getFormattedValue(patientData.getBloodGroup()))
+      .append(getFormattedValue(patientData.getContactData().getAddressAsString()))
+      .append(getFormattedValue(patientData.getContactData().getHomePhone()))
+      .append(getFormattedValue(patientData.getPersonData().getGender()))
+      .append(getFormattedValue(CommonToolkit.getCurrentDateTime()))
+      .append(getFormattedValue(CommonToolkit.isLatest(true)));
+    return formatSql(stringBuffer).toString();
   }
 }

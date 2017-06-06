@@ -18,10 +18,22 @@ import se.ucsc.hsptl.assignment.exception.DataBaseException;
 import se.ucsc.hsptl.assignment.exception.DataLoaderException;
 
 /**
- * Created by Indika on 4/29/2017.
+ * Created by Pathum on 4/29/2017.
  */
 public class PatientDataLoader implements DataLoader<PatientData>
 {
+  private static PatientDataLoader INSTANCE = new PatientDataLoader();
+
+  private PatientDataLoader()
+  {
+
+  }
+
+  public static PatientDataLoader getInstance()
+  {
+    return INSTANCE;
+  }
+
   @Override
   public PatientData loadById(String id) throws DataLoaderException
   {
@@ -71,32 +83,33 @@ public class PatientDataLoader implements DataLoader<PatientData>
 
   private PatientData getPatientDataByRow(ResultSet resultSet) throws SQLException
   {
-    return new PatientData().setName(getName(resultSet)).setContactData(getContactData(resultSet))
+    return new PatientData(resultSet.getString(PatientDTO.getTableAllFields()[1])).setName(getName(resultSet))
+      .setContactData(getContactData(resultSet))
       .setPersonData(getPersonData(resultSet));
   }
 
   private PersonData getPersonData(ResultSet resultSet) throws SQLException
   {
-    return new PersonData(resultSet.getString("gender"),
-                          resultSet.getDate("birthDate"),
-                          resultSet.getString("nationality"));
+    return new PersonData(resultSet.getString(PatientDTO.getTableAllFields()[10]),
+                          resultSet.getDate(PatientDTO.getTableAllFields()[11]),
+                          resultSet.getString(PatientDTO.getTableAllFields()[10]));
   }
 
   private ContactData getContactData(ResultSet resultSet) throws SQLException
   {
-    return new ContactData(resultSet.getString("mobile"),
-                           resultSet.getString("home"),
-                           resultSet.getString("office"),
-                           new String[] { resultSet.getString("address") },
-                           resultSet.getString("email"));
+    return new ContactData(resultSet.getString(PatientDTO.getTableAllFields()[9]),
+                           resultSet.getString(PatientDTO.getTableAllFields()[9]),
+                           resultSet.getString(PatientDTO.getTableAllFields()[9]),
+                           new String[] { resultSet.getString(PatientDTO.getTableAllFields()[8]) },
+                           resultSet.getString(PatientDTO.getTableAllFields()[9]));
   }
 
   private Name getName(ResultSet resultSet) throws SQLException
   {
-    return new Name(resultSet.getString(PatientDTO.getPatientTableFields()[0]),
-                    resultSet.getString(PatientDTO.getPatientTableFields()[1]),
-                    resultSet.getString(PatientDTO.getPatientTableFields()[2]),
-                    resultSet.getString(PatientDTO.getPatientTableFields()[3]));
+    return new Name(resultSet.getString(PatientDTO.getTableAllFields()[2]),
+                    resultSet.getString(PatientDTO.getTableAllFields()[3]),
+                    resultSet.getString(PatientDTO.getTableAllFields()[4]),
+                    resultSet.getString(PatientDTO.getTableAllFields()[5]));
   }
 
   private ResultSet getPatientDataResult(String condition) throws DataLoaderException
@@ -104,7 +117,7 @@ public class PatientDataLoader implements DataLoader<PatientData>
     try
     {
       return DataBaseService.executeQuery(SQLConstants.PATIENT_TABLE,
-                                          PatientDTO.getPatientTableFields(),
+                                          PatientDTO.getTableAllFields(),
                                           condition,
                                           DataBaseQueryType.SELECT);
     }

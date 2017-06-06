@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import se.ucsc.hsptl.assignment.exception.DataBaseException;
 
 /**
- * Created by Indika on 4/29/2017.
+ * Created by Pathum on 4/29/2017.
  */
 public class DeleteQuery extends AbstractQuery
 {
@@ -24,6 +24,12 @@ public class DeleteQuery extends AbstractQuery
   public int executeQuery(String area, String[] fields, String value, String condition) throws DataBaseException
   {
     throw new DataBaseException("Method is not implemented");
+  }
+
+  @Override
+  public int executeQuery(String area, String[] fields, String[] values, String condition) throws DataBaseException
+  {
+    return 0;
   }
 
   private String createSqlQuery(String area, String condition)

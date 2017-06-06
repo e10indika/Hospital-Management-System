@@ -3,7 +3,7 @@ package se.ucsc.hsptl.assignment.data;
 import java.util.Date;
 
 /**
- * Created by Indika on 4/29/2017.
+ * Created by Pathum on 4/29/2017.
  */
 public class PersonData
 {

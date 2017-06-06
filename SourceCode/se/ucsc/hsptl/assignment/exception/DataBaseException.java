@@ -1,7 +1,7 @@
 package se.ucsc.hsptl.assignment.exception;
 
 /**
- * Created by Indika on 4/29/2017.
+ * Created by Pathum on 4/29/2017.
  */
 public class DataBaseException extends Exception
 {

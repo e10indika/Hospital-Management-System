@@ -1,7 +1,7 @@
 package se.ucsc.hsptl.assignment.data;
 
 /**
- * Created by Indika on 4/29/2017.
+ * Created by Pathum on 4/29/2017.
  */
 public class PatientData implements Data
 {
@@ -9,13 +9,22 @@ public class PatientData implements Data
   Name name;
   ContactData contactData;
   private String patientId;
+  private String bloodGroup;
 
-  public PatientData()
+  public PatientData setPatientId(String patientId)
   {
+    this.patientId = patientId;
+    return this;
   }
 
-  public PatientData(PersonData personData, Name name, ContactData contactData)
+  public PatientData(String patientId)
   {
+    this.patientId = patientId;
+  }
+
+  public PatientData(String patientId, PersonData personData, Name name, ContactData contactData)
+  {
+    this.patientId = patientId;
     this.personData = personData;
     this.name = name;
     this.contactData = contactData;
@@ -57,5 +66,15 @@ public class PatientData implements Data
   public String getPatientId()
   {
     return patientId;
+  }
+
+  public String getBloodGroup()
+  {
+    return bloodGroup;
+  }
+
+  public void setBloodGroup(String bloodGroup)
+  {
+    this.bloodGroup = bloodGroup;
   }
 }

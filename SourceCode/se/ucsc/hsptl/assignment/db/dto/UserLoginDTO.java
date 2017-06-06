@@ -1,13 +1,13 @@
 package se.ucsc.hsptl.assignment.db.dto;
 
+import com.google.common.collect.ObjectArrays;
+
 /**
- * Created by Indika on 5/7/2017.
+ * Created by Pathum on 5/7/2017.
  */
 public class UserLoginDTO
 {
   private static final String[] FIELDS =
-    new String[] { "primaryKey", "userId", "employeeId", "password", "lastLoginTime", "lastLogoutTime", "latest" };
-  private static final String[] FIELDS_TO_INSERT =
     new String[] { "userId", "employeeId", "password", "lastLoginTime", "lastLogoutTime", "latest" };
 
   public static String[] getTableFields()
@@ -15,8 +15,8 @@ public class UserLoginDTO
     return FIELDS;
   }
 
-  public static String[] getTableFieldsToInsert()
+  public static String[] getTableAllFields()
   {
-    return FIELDS_TO_INSERT;
+    return ObjectArrays.concat("primaryKey", FIELDS);
   }
 }

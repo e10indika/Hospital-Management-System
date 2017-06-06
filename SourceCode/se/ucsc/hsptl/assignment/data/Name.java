@@ -1,7 +1,7 @@
 package se.ucsc.hsptl.assignment.data;
 
 /**
- * Created by Indika on 4/29/2017.
+ * Created by Pathum on 4/29/2017.
  */
 public class Name
 {
@@ -31,9 +31,21 @@ public class Name
     return firstName;
   }
 
+  public Name setFirstName(String firstName)
+  {
+    this.firstName = firstName;
+    return this;
+  }
+
   public String getMiddleName()
   {
     return middleName;
+  }
+
+  public Name setMiddleName(String middleName)
+  {
+    this.middleName = middleName;
+    return this;
   }
 
   public String getLastName()
@@ -41,9 +53,21 @@ public class Name
     return lastName;
   }
 
+  public Name setLastName(String lastName)
+  {
+    this.lastName = lastName;
+    return this;
+  }
+
   public String getTitle()
   {
     return title;
+  }
+
+  public Name setTitle(String title)
+  {
+    this.title = title;
+    return this;
   }
 
   public String getFormattedName()
@@ -67,8 +91,9 @@ public class Name
   private void setPresentationName()
   {
     StringBuffer stringBuffer = new StringBuffer();
-    stringBuffer.append(title).append(SPACE).append(lastName.toUpperCase()).append(SPACE).append(firstName.toUpperCase().charAt(0))
-      .append(DOT_SPACE).append(middleName.toUpperCase().charAt(0)).append(DOT);
+    stringBuffer.append(title).append(SPACE).append(lastName.toUpperCase()).append(SPACE)
+      .append(firstName.toUpperCase().charAt(0)).append(DOT_SPACE).append(middleName.toUpperCase().charAt(0))
+      .append(DOT);
 
     this.presentationName = stringBuffer.toString();
   }
